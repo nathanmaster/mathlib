@@ -29,121 +29,73 @@ import {
     // Tests for integer-based functions
     describe('Integer Functions', () => {
       it('should add two numbers correctly', () => {
-        const num1 = 3;
-        const num2 = 5;
-        const expectedResult = 8;
-  
-        add.mockReturnValue(expectedResult);
-  
-        const result = add(num1, num2);
-  
-        expect(result).toBe(expectedResult);
+        expect(add(3, 5)).toBe(8);
+        expect(add(-3, 5)).toBe(2);
+        expect(add(0, 0)).toBe(0);
+        expect(add(Number.MAX_SAFE_INTEGER, 1)).toBe(Number.MAX_SAFE_INTEGER + 1);
       });
   
       it('should subtract two numbers correctly', () => {
-        const num1 = 7;
-        const num2 = 3;
-        const expectedResult = 4;
-  
-        subtract.mockReturnValue(expectedResult);
-  
-        const result = subtract(num1, num2);
-  
-        expect(result).toBe(expectedResult);
+        expect(subtract(7, 3)).toBe(-4);
+        expect(subtract(3, 7)).toBe(4);
+        expect(subtract(0, 0)).toBe(0);
+        expect(subtract(-3, -7)).toBe(-4);
       });
   
       it('should multiply two numbers correctly', () => {
-        const num1 = 4;
-        const num2 = 6;
-        const expectedResult = 24;
-  
-        multiply.mockReturnValue(expectedResult);
-  
-        const result = multiply(num1, num2);
-  
-        expect(result).toBe(expectedResult);
+        expect(multiply(4, 6)).toBe(24);
+        expect(multiply(4, 0)).toBe(0);
+        expect(multiply(-4, 6)).toBe(-24);
+        expect(multiply(Number.MAX_SAFE_INTEGER, 2)).toBe(Number.MAX_SAFE_INTEGER * 2);
       });
   
       it('should calculate the power of a number correctly', () => {
-        const num = 2;
-        const num2 = 3;
-        const expectedResult = 8;
-  
-        power.mockReturnValue(expectedResult);
-  
-        const result = power(num, num2);
-  
-        expect(result).toBe(expectedResult);
+        expect(power(2, 3)).toBe(8);
+        expect(power(2, 0)).toBe(1);
+        expect(power(0, 3)).toBe(0);
+        expect(power(-2, 3)).toBe(-8);
       });
   
       it('should calculate the absolute value of a number correctly', () => {
-        const num = -5;
-        const expectedResult = 5;
-  
-        abs.mockReturnValue(expectedResult);
-  
-        const result = abs(num);
-  
-        expect(result).toBe(expectedResult);
+        expect(abs(-5)).toBe(5);
+        expect(abs(5)).toBe(5);
+        expect(abs(0)).toBe(0);
       });
   
       it('should calculate the modulo of two numbers correctly', () => {
-        const num1 = 7;
-        const num2 = 3;
-        const expectedResult = 1;
-  
-        mod.mockReturnValue(expectedResult);
-  
-        const result = mod(num1, num2);
-  
-        expect(result).toBe(expectedResult);
+        expect(mod(7, 3)).toBe(1);
+        expect(mod(7, 7)).toBe(0);
+        expect(mod(7, 0)).toBe(NaN); // Handle division by zero
       });
   
       it('should calculate the factorial of a number correctly', () => {
-        const num = 5;
-        const expectedResult = 120;
-  
-        fac.mockReturnValue(expectedResult);
-  
-        const result = fac(num);
-  
-        expect(result).toBe(expectedResult);
+        expect(fac(5)).toBe(120);
+        expect(fac(0)).toBe(1);
+        expect(fac(1)).toBe(1);
+        expect(fac(10)).toBe(3628800);
       });
     });
   
     // Tests for decimal-based functions
     describe('Decimal Functions', () => {
       it('should round a number to the nearest integer', () => {
-        const num = 3.7;
-        const expectedResult = 4;
-  
-        round.mockReturnValue(expectedResult);
-  
-        const result = round(num);
-  
-        expect(result).toBe(expectedResult);
+        expect(round(3.7)).toBe(4);
+        expect(round(3.4)).toBe(3);
+        expect(round(0.5)).toBe(1);
+        expect(round(-0.5)).toBe(0);
       });
   
       it('should calculate the ceiling of a number correctly', () => {
-        const num = 3.2;
-        const expectedResult = 4;
-  
-        ceil.mockReturnValue(expectedResult);
-  
-        const result = ceil(num);
-  
-        expect(result).toBe(expectedResult);
+        expect(ceil(3.2)).toBe(4);
+        expect(ceil(4)).toBe(4);
+        expect(ceil(-3.2)).toBe(-3);
       });
   
       it('should calculate the floor of a number correctly', () => {
-        const num = 3.9;
-        const expectedResult = 3;
-  
-        floor.mockReturnValue(expectedResult);
-  
-        const result = floor(num);
-  
-        expect(result).toBe(expectedResult);
+        expect(floor(3.9)).toBe(3);
+        expect(floor(4)).toBe(4);
+        expect(floor(-3.9)).toBe(-4);
       });
     });
   });
+  
